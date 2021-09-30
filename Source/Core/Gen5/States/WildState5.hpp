@@ -17,19 +17,33 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef ENCOUNTERSLOT_HPP
-#define ENCOUNTERSLOT_HPP
+#ifndef WILDSTATE5_HPP
+#define WILDSTATE5_HPP
 
-#include <Core/Util/Global.hpp>
+#include <Core/Gen5/States/State5.hpp>
+#include <Core/Parents/States/WildState.hpp>
 
-enum Encounter : u8;
-
-namespace EncounterSlot
+class WildState5 : public State5, public WildState
 {
-    u8 hSlot(u16 result, Encounter encounter);
-    u8 jSlot(u16 result, Encounter encounter);
-    u8 kSlot(u16 result, Encounter encounter);
-    u8 bwSlot(u16 result, Encounter encounter);
+public:
+    WildState5() = default;
+
+    explicit WildState5(u32 advance) : WildState(advance)
+    {
+    }
+
+    u32 getIVState() const
+    {
+        return ivState;
+    }
+
+    void setIVState(u32 ivState)
+    {
+        this->ivState = ivState;
+    }
+
+private:
+    u32 ivState;
 };
 
-#endif // ENCOUNTERSLOT_HPP
+#endif // WILDSTATE5_HPP

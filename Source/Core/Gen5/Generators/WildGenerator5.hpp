@@ -17,19 +17,28 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef ENCOUNTERSLOT_HPP
-#define ENCOUNTERSLOT_HPP
+#ifndef GENERATOR5_HPP
+#define GENERATOR5_HPP
 
-#include <Core/Util/Global.hpp>
+#include <Core/Parents/Generators/WildGenerator.hpp>
+#include <Core/Parents/States/WildState.hpp>
 
 enum Encounter : u8;
 
-namespace EncounterSlot
+class WildGenerator5 : public WildGenerator
 {
-    u8 hSlot(u16 result, Encounter encounter);
-    u8 jSlot(u16 result, Encounter encounter);
-    u8 kSlot(u16 result, Encounter encounter);
-    u8 bwSlot(u16 result, Encounter encounter);
+public:
+    WildGenerator5() = default;
+    WildGenerator5(u32 initialAdvances, u32 maxAdvances, u16 tid, u16 sid, u8 gender, u8 genderRatio, Method method, Encounter encounter,
+                   const StateFilter &filter);
+    std::vector<WildState> generate(u64 seed) const;
+
+private:
+    u8 idBit;
+    Encounter encounter;
+    u8 gender;
+
+    std::vector<WildState> generateWild(u64 seed) const;
 };
 
-#endif // ENCOUNTERSLOT_HPP
+#endif // GENERATOR5_HPP

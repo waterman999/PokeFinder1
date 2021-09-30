@@ -86,6 +86,7 @@ set(PROJECT_UI
     Gen5/Profile/ProfileEditor5.ui
     Gen5/Profile/ProfileManager5.ui
     Gen5/Stationary5.ui
+    Gen5/Wild5.ui
     MainWindow.ui
     Util/EncounterLookup.ui
     Util/IVCalculator.ui
@@ -141,6 +142,7 @@ set(PROJECT_SOURCES
     Gen5/Profile/ProfileEditor5.cpp
     Gen5/Profile/ProfileManager5.cpp
     Gen5/Stationary5.cpp
+    Gen5/Wild5.cpp
     MainWindow.cpp
     Models/Gen3/EggModel3.cpp
     Models/Gen3/GameCubeModel.cpp
@@ -163,6 +165,7 @@ set(PROJECT_SOURCES
     Models/Gen5/EventModel5.cpp
     Models/Gen5/HiddenGrottoModel.cpp
     Models/Gen5/IDModel5.cpp
+    Models/Gen5/WildModel5.cpp
     Models/Gen5/ProfileModel5.cpp
     Models/Gen5/ProfileSearcherModel5.cpp
     Models/Gen5/StationaryModel5.cpp

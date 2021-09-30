@@ -47,6 +47,7 @@
 #include <Forms/Gen5/Profile/ProfileCalibrator5.hpp>
 #include <Forms/Gen5/Profile/ProfileManager5.hpp>
 #include <Forms/Gen5/Stationary5.hpp>
+#include <Forms/Gen5/Wild5.hpp>
 #include <Forms/Util/EncounterLookup.hpp>
 #include <Forms/Util/IVCalculator.hpp>
 #include <Forms/Util/IVtoPID.hpp>
@@ -67,7 +68,11 @@ MainWindow::MainWindow(bool profile, QWidget *parent) : QMainWindow(parent), ui(
 
     setupModels();
 
+<<<<<<< HEAD
     QTimer::singleShot(1000, [this, &profile] {
+=======
+    QTimer::singleShot(1000, [this, &profile] {
+>>>>>>> da33f5de... Add basic wild
         if (!profile)
         {
             QMessageBox message(QMessageBox::Warning, tr("Unable to locate profiles"),
@@ -100,6 +105,7 @@ MainWindow::~MainWindow()
     delete hiddenGrotto;
     delete egg5;
     delete ids5;
+    delete wild5;
 }
 
 void MainWindow::setupModels()
@@ -134,6 +140,7 @@ void MainWindow::setupModels()
     connect(ui->pushButtonHiddenGrotto, &QPushButton::clicked, this, &MainWindow::openHiddenGrotto);
     connect(ui->pushButtonEgg5, &QPushButton::clicked, this, &MainWindow::openEgg5);
     connect(ui->pushButtonIDs5, &QPushButton::clicked, this, &MainWindow::openIDs5);
+    connect(ui->pushButtonWild5, &QPushButton::clicked, this, &MainWindow::openWild5);
     connect(ui->actionProfileCalibrator, &QAction::triggered, this, &MainWindow::openProfileCalibrator);
     connect(ui->actionProfileManager5, &QAction::triggered, this, &MainWindow::openProfileManager5);
 
@@ -236,6 +243,10 @@ void MainWindow::updateProfiles(int num)
         if (ids5)
         {
             ids5->updateProfiles();
+        }
+        if (wild5)
+        {
+            wild5->updateProfiles();
         }
         if (egg5)
         {
@@ -540,6 +551,25 @@ void MainWindow::openIDs5()
                             tr("Please use the Profile Calibrator under Gen 5 Tools to create one."));
         message.exec();
         ids5->close();
+    }
+}
+
+void MainWindow::openWild5()
+{
+    if (!wild5)
+    {
+        wild5 = new Wild5();
+        connect(wild5, &Wild5::alertProfiles, this, &MainWindow::updateProfiles);
+    }
+    wild5->show();
+    wild5->raise();
+
+    if (!wild5->hasProfiles())
+    {
+        QMessageBox message(QMessageBox::Warning, tr("No profiles found"),
+                            tr("Please use the Profile Calibrator under Gen 5 Tools to create one."));
+        message.exec();
+        wild5->close();
     }
 }
 

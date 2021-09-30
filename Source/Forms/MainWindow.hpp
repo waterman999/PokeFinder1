@@ -43,6 +43,7 @@ class DreamRadar;
 class HiddenGrotto;
 class Eggs5;
 class IDs5;
+class Wild5;
 
 class MainWindow : public QMainWindow
 {
@@ -69,6 +70,7 @@ private:
     HiddenGrotto *hiddenGrotto = nullptr;
     Eggs5 *egg5 = nullptr;
     IDs5 *ids5 = nullptr;
+    Wild5 *wild5 = nullptr;
 
     void setupModels();
     void checkUpdates();
@@ -102,6 +104,7 @@ private slots:
     void openHiddenGrotto();
     void openEgg5();
     void openIDs5();
+    void openWild5();
     void openProfileCalibrator();
     void openProfileManager5();
     void openAbout();

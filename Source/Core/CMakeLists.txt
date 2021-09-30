@@ -65,6 +65,7 @@ add_library(PokeFinderCore STATIC
     Gen5/Generators/HiddenGrottoGenerator.cpp
     Gen5/Generators/IDGenerator5.cpp
     Gen5/Generators/StationaryGenerator5.cpp
+    Gen5/Generators/WildGenerator5.cpp
     Gen5/Keypresses.cpp
     Gen5/Nazos.cpp
     Gen5/PGF.cpp
@@ -74,6 +75,7 @@ add_library(PokeFinderCore STATIC
     Gen5/Searchers/EventSearcher5.cpp
     Gen5/Searchers/HiddenGrottoSearcher.cpp
     Gen5/Searchers/IDSearcher5.cpp
+    Gen5/Searchers/WildSearcher5.cpp
     Gen5/Searchers/ProfileSearcher5.cpp
     Gen5/Searchers/StationarySearcher5.cpp
     Parents/Daycare.cpp

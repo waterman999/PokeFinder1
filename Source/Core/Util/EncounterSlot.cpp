@@ -103,11 +103,11 @@ namespace EncounterSlot
             return calcSlot<5>(compare, std::array<u8, 5> { 60, 90, 95, 99, 100 });
         case Encounter::BugCatchingContest:
             return calcSlot<10>(compare,
-                            std::array<std::pair<u8, u8>, 10> { std::pair<u8, u8> { 80, 99 }, std::pair<u8, u8> { 60, 79 },
-                                                                std::pair<u8, u8> { 50, 59 }, std::pair<u8, u8> { 40, 49 },
-                                                                std::pair<u8, u8> { 30, 39 }, std::pair<u8, u8> { 20, 29 },
-                                                                std::pair<u8, u8> { 15, 19 }, std::pair<u8, u8> { 10, 14 },
-                                                                std::pair<u8, u8> { 5, 9 }, std::pair<u8, u8> { 0, 4 } });
+                                std::array<std::pair<u8, u8>, 10> { std::pair<u8, u8> { 80, 99 }, std::pair<u8, u8> { 60, 79 },
+                                                                    std::pair<u8, u8> { 50, 59 }, std::pair<u8, u8> { 40, 49 },
+                                                                    std::pair<u8, u8> { 30, 39 }, std::pair<u8, u8> { 20, 29 },
+                                                                    std::pair<u8, u8> { 15, 19 }, std::pair<u8, u8> { 10, 14 },
+                                                                    std::pair<u8, u8> { 5, 9 }, std::pair<u8, u8> { 0, 4 } });
         case Encounter::SafariZone:
             return compare % 10;
         case Encounter::HeadButt:
@@ -116,6 +116,28 @@ namespace EncounterSlot
             return calcSlot<2>(compare, std::array<u8, 2> { 80, 100 });
         default:
             return calcSlot<12>(compare, std::array<u8, 12> { 20, 40, 50, 60, 70, 80, 85, 90, 94, 98, 99, 100 });
+        }
+    }
+
+    // Calcs the encounter slot for Method 5 (BW/BW2)
+    u8 bwSlot(u16 result, Encounter encounter, bool isBW2)
+    {
+
+        u8 compare = isBW2 ? (result >> 32) * 100 : result >> 16 / 656;
+        switch (encounter)
+        {
+        case Encounter::OldRod:
+        case Encounter::GoodRod:
+        case Encounter::SuperRod:
+            return calcSlot<5>(compare, std::array<u8, 5> { 39, 79, 94, 98, 99 });
+        case Encounter::Surfing:
+            return calcSlot<5>(compare, std::array<u8, 5> { 59, 89, 94, 98, 99 });
+        case Encounter::HeadButt:
+            return calcSlot<6>(compare, std::array<u8, 6> { 50, 65, 80, 90, 95, 100 });
+        case Encounter::RockSmash:
+            return calcSlot<2>(compare, std::array<u8, 2> { 80, 100 });
+        default:
+            return calcSlot<12>(compare, std::array<u8, 12> { 19, 39, 49, 59, 69, 79, 84, 89, 93, 97, 98, 99 });
         }
     }
 }
