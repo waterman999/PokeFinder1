@@ -30,7 +30,7 @@ class WildGenerator5 : public WildGenerator
 public:
     WildGenerator5() = default;
     WildGenerator5(u32 initialAdvances, u32 maxAdvances, u16 tid, u16 sid, u8 gender, u8 genderRatio, bool isBW2, Method method,
-                   Encounter encounter, const StateFilter &filter);
+                   Encounter encounter, const StateFilter &filter, bool shinyCharm);
     std::vector<WildState> generate(u64 seed) const;
 
 private:
@@ -38,6 +38,7 @@ private:
     Encounter encounter;
     u8 gender;
     bool isBW2;
+    bool shinyCharm;
 
     std::vector<WildState> generateWild(u64 seed) const;
 };

@@ -112,9 +112,9 @@ void Wild5::setupModels()
         ui->comboBoxGeneratorLead->addItem(QString::fromStdString(nature));
     }
 
-    ui->filterGenerator->disableControls(Controls::EncounterSlots | Controls::Ability | Controls::Shiny | Controls::Gender
-                                         | Controls::GenderRatio | Controls::Natures);
-    ui->filterSearcher->disableControls(Controls::EncounterSlots | Controls::DisableFilter | Controls::UseDelay);
+    ui->filterGenerator->disableControls(Controls::Ability | Controls::Shiny | Controls::Gender | Controls::GenderRatio
+                                         | Controls::Natures);
+    ui->filterSearcher->disableControls(Controls::DisableFilter | Controls::UseDelay);
 
     QAction *outputTXTGenerator = generatorMenu->addAction(tr("Output Results to TXT"));
     QAction *outputCSVGenerator = generatorMenu->addAction(tr("Output Results to CSV"));
@@ -166,6 +166,7 @@ void Wild5::generate()
     u8 genderRatio = ui->filterGenerator->getGenderRatio();
     u32 offset = 0;
     bool isBW2 = currentProfile.getVersion() & Game::BW2;
+    bool shinyCharm = currentProfile.getShinyCharm();
     auto encounter = static_cast<Encounter>(ui->comboBoxGeneratorEncounter->getCurrentInt());
     if (ui->filterGenerator->useDelay())
     {
@@ -174,9 +175,9 @@ void Wild5::generate()
 
     StateFilter filter(ui->filterGenerator->getGender(), ui->filterGenerator->getAbility(), ui->filterGenerator->getShiny(),
                        ui->filterGenerator->getDisableFilters(), ui->filterGenerator->getMinIVs(), ui->filterGenerator->getMaxIVs(),
-                       ui->filterGenerator->getNatures(), ui->filterGenerator->getHiddenPowers(), {});
+                       ui->filterGenerator->getNatures(), ui->filterGenerator->getHiddenPowers(), ui->filterGenerator->getEncounterSlots());
 
-    WildGenerator5 generator(initialAdvances, maxAdvances, tid, sid, gender, genderRatio, isBW2, method, encounter, filter);
+    WildGenerator5 generator(initialAdvances, maxAdvances, tid, sid, gender, genderRatio, isBW2, method, encounter, filter, shinyCharm);
     generator.setOffset(offset);
 
     if (ui->pushButtonGeneratorLead->text() == tr("Cute Charm"))
@@ -216,13 +217,14 @@ void Wild5::search()
     u8 gender = ui->filterSearcher->getGender();
     u8 genderRatio = ui->filterSearcher->getGenderRatio();
     bool isBW2 = currentProfile.getVersion() & Game::BW2;
+    bool shinyCharm = currentProfile.getShinyCharm();
     auto encounter = static_cast<Encounter>(ui->comboBoxSearcherEncounter->getCurrentInt());
 
     StateFilter filter(ui->filterSearcher->getGender(), ui->filterSearcher->getAbility(), ui->filterSearcher->getShiny(),
                        ui->filterSearcher->getDisableFilters(), ui->filterSearcher->getMinIVs(), ui->filterSearcher->getMaxIVs(),
-                       ui->filterSearcher->getNatures(), ui->filterSearcher->getHiddenPowers(), {});
+                       ui->filterSearcher->getNatures(), ui->filterSearcher->getHiddenPowers(), ui->filterGenerator->getEncounterSlots());
 
-    WildGenerator5 generator(0, maxAdvances, tid, sid, gender, genderRatio, isBW2, method, encounter, filter);
+    WildGenerator5 generator(0, maxAdvances, tid, sid, gender, genderRatio, isBW2, method, encounter, filter, shinyCharm);
 
     auto *searcher = new WildSearcher5(currentProfile, method);
 

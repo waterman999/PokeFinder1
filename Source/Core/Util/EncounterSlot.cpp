@@ -120,9 +120,9 @@ namespace EncounterSlot
     }
 
     // Calcs the encounter slot for Method 5 (BW/BW2)
-    u8 bwSlot(u64 result, Encounter encounter, bool isBW2)
+    u8 bwSlot(u32 result, Encounter encounter, bool isBW2)
     {
-        u8 compare = isBW2 ? ((result >> 32) * 100) >> 32 : ((result >> 32) >> 16) / 656;
+        u8 compare = isBW2 ? result : (result >> 16) / 656;
 
         switch (encounter)
         {

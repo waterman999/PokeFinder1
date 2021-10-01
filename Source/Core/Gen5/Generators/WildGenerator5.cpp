@@ -29,13 +29,14 @@
 #include <Core/Util/Utilities.hpp>
 
 WildGenerator5::WildGenerator5(u32 initialAdvances, u32 maxAdvances, u16 tid, u16 sid, u8 gender, u8 genderRatio, bool isBW2, Method method,
-                               Encounter encounter, const StateFilter &filter) :
+                               Encounter encounter, const StateFilter &filter, bool shinyCharm) :
     WildGenerator(initialAdvances, maxAdvances, tid, sid, genderRatio, method, filter),
     idBit((tid & 1) ^ (sid & 1)),
     encounter(encounter),
     gender(gender)
 {
     this->isBW2 = isBW2;
+    this->shinyCharm = shinyCharm;
 }
 
 std::vector<WildState> WildGenerator5::generate(u64 seed) const
@@ -70,7 +71,8 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
         WildState state(initialAdvances + cnt);
         BWRNG go(rng.getSeed());
         state.setSeed(go.nextUInt(0x1fff)); // Chatot pitch
-        u64 slot = go.next();
+
+        u32 slot = isBW2 ? go.nextUInt(100) : go.nextUInt();
         state.setEncounterSlot(EncounterSlot::bwSlot(slot, encounter, isBW2));
         go.advance(1); // Held item
 
@@ -111,7 +113,14 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
         //}
         else // No lead
         {
-            pid = go.nextUInt() ^ 0x10000;
+            int shinyChances = shinyCharm ? 3 : 1;
+            int cnt = 0;
+            do
+            {
+                pid = go.nextUInt() ^ 0x10000;
+                state.setPID(pid);
+                cnt++;
+            } while ((cnt < shinyChances) & filter.compareShiny(state));
             state.setNature(go.nextUInt(25));
         }
 
@@ -121,7 +130,6 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
             pid ^= 0x80000000;
         }
 
-        state.setPID(pid);
         state.setAbility((pid >> 16) & 1);
         state.setGender(pid & 255, genderRatio);
         state.setShiny<8>(tsv, (pid >> 16) ^ (pid & 0xffff));
