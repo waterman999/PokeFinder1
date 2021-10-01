@@ -165,7 +165,7 @@ void Wild5::generate()
     u8 gender = ui->filterGenerator->getGender();
     u8 genderRatio = ui->filterGenerator->getGenderRatio();
     u32 offset = 0;
-    bool isBW2 = currentProfile.getVersion() & Game::BW;
+    bool isBW2 = currentProfile.getVersion() & Game::BW2;
     auto encounter = static_cast<Encounter>(ui->comboBoxGeneratorEncounter->getCurrentInt());
     if (ui->filterGenerator->useDelay())
     {
@@ -215,13 +215,14 @@ void Wild5::search()
     u16 sid = currentProfile.getSID();
     u8 gender = ui->filterSearcher->getGender();
     u8 genderRatio = ui->filterSearcher->getGenderRatio();
+    bool isBW2 = currentProfile.getVersion() & Game::BW2;
     auto encounter = static_cast<Encounter>(ui->comboBoxSearcherEncounter->getCurrentInt());
 
     StateFilter filter(ui->filterSearcher->getGender(), ui->filterSearcher->getAbility(), ui->filterSearcher->getShiny(),
                        ui->filterSearcher->getDisableFilters(), ui->filterSearcher->getMinIVs(), ui->filterSearcher->getMaxIVs(),
                        ui->filterSearcher->getNatures(), ui->filterSearcher->getHiddenPowers(), {});
 
-    WildGenerator5 generator(0, maxAdvances, tid, sid, gender, genderRatio, method, encounter, filter);
+    WildGenerator5 generator(0, maxAdvances, tid, sid, gender, genderRatio, isBW2, method, encounter, filter);
 
     auto *searcher = new WildSearcher5(currentProfile, method);
 

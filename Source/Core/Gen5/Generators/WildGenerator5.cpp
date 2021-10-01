@@ -35,6 +35,7 @@ WildGenerator5::WildGenerator5(u32 initialAdvances, u32 maxAdvances, u16 tid, u1
     encounter(encounter),
     gender(gender)
 {
+    this->isBW2 = isBW2;
 }
 
 std::vector<WildState> WildGenerator5::generate(u64 seed) const
@@ -69,7 +70,8 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
         WildState state(initialAdvances + cnt);
         BWRNG go(rng.getSeed());
         state.setSeed(go.nextUInt(0x1fff)); // Chatot pitch
-        state.setEncounterSlot(EncounterSlot::bwSlot(go.nextUInt(), encounter, isBW2));
+        u64 slot = go.next();
+        state.setEncounterSlot(EncounterSlot::bwSlot(slot, encounter, isBW2));
         go.advance(1); // Held item
 
         u32 pid;
