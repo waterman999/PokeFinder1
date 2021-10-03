@@ -101,9 +101,6 @@ void Wild5::setupModels()
     connect(ui->comboBoxGeneratorMethod, QOverload<int>::of(&ComboBox::currentIndexChanged), this, &Wild5::generatorMethodIndexChanged);
     connect(ui->comboBoxSearcherMethod, QOverload<int>::of(&ComboBox::currentIndexChanged), this, &Wild5::searcherMethodIndexChanged);
 
-    ui->comboBoxGeneratorEncounter->addItem(tr("Grass"), Encounter::Grass);
-    ui->comboBoxSearcherEncounter->addItem(tr("Grass"), Encounter::Grass);
-
     ui->comboBoxSearcherLead->setup({ Lead::Search, Lead::Synchronize, Lead::CuteCharm, Lead::None });
 
     ui->comboBoxGeneratorLead->addItem(tr("None"));
@@ -350,14 +347,14 @@ void Wild5::generatorMethodIndexChanged(int index)
         {
         case Method::Method5:
         {
-            ui->comboBoxGeneratorEncounter->addItems({ tr("Grass") });
-            ui->comboBoxGeneratorEncounter->setup({ Encounter::Grass });
+            ui->comboBoxGeneratorEncounter->addItems({ tr("Grass"), tr("Surfing") });
+            ui->comboBoxGeneratorEncounter->setup({ Encounter::Grass, Encounter::Surfing });
 
             ui->pushButtonCalculateInitialAdvances->setVisible(true);
 
             ui->filterGenerator->disableControls(Controls::IVs | Controls::HiddenPowers);
             ui->filterGenerator->enableControls(Controls::Ability | Controls::Shiny | Controls::Gender | Controls::GenderRatio
-                                                | Controls::Natures);
+                                                | Controls::Natures | Controls::EncounterSlots);
             break;
         }
         }

@@ -47,6 +47,7 @@ std::vector<WildState> WildGenerator5::generate(u64 seed) const
         switch (encounter)
         {
         case Encounter::Grass:
+        case Encounter::Surfing:
             return generateWild(seed);
         default:
             break;
