@@ -346,7 +346,6 @@ void Wild5::generatorMethodIndexChanged(int index)
         switch (method)
         {
         case Method::Method5:
-        {
             ui->comboBoxGeneratorEncounter->addItems({ tr("Grass"), tr("Surfing") });
             ui->comboBoxGeneratorEncounter->setup({ Encounter::Grass, Encounter::Surfing });
 
@@ -357,24 +356,21 @@ void Wild5::generatorMethodIndexChanged(int index)
                                                 | Controls::Natures | Controls::EncounterSlots);
             break;
         }
-        }
     }
     else
     {
         switch (method)
         {
         case Method::Method5:
-        {
-            ui->comboBoxGeneratorEncounter->addItems({ tr("Grass") });
-            ui->comboBoxGeneratorEncounter->setup({ Encounter::Grass });
+            ui->comboBoxGeneratorEncounter->addItems({ tr("Grass"), tr("Surfing") });
+            ui->comboBoxGeneratorEncounter->setup({ Encounter::Grass, Encounter::Surfing });
 
             ui->pushButtonCalculateInitialAdvances->setVisible(true);
 
             ui->filterGenerator->disableControls(Controls::IVs | Controls::HiddenPowers);
             ui->filterGenerator->enableControls(Controls::Ability | Controls::Shiny | Controls::Gender | Controls::GenderRatio
-                                                | Controls::Natures);
+                                                | Controls::Natures | Controls::EncounterSlots);
             break;
-        }
         }
     }
 }
@@ -388,15 +384,13 @@ void Wild5::searcherMethodIndexChanged(int index)
         switch (method)
         {
         case Method::Method5:
-        {
-            ui->comboBoxSearcherEncounter->addItems({ tr("Grass") });
-            ui->comboBoxSearcherEncounter->setup({ Encounter::Grass });
+            ui->comboBoxSearcherEncounter->addItems({ tr("Grass"), tr("Surfing") });
+            ui->comboBoxSearcherEncounter->setup({ Encounter::Grass, Encounter::Surfing });
 
             ui->filterSearcher->disableControls(Controls::IVs | Controls::HiddenPowers);
             ui->filterSearcher->enableControls(Controls::Ability | Controls::Shiny | Controls::Gender | Controls::GenderRatio
                                                | Controls::Natures);
             break;
-        }
         }
     }
     else
@@ -404,15 +398,13 @@ void Wild5::searcherMethodIndexChanged(int index)
         switch (method)
         {
         case Method::Method5:
-        {
-            ui->comboBoxSearcherEncounter->addItems({ tr("Grass") });
-            ui->comboBoxSearcherEncounter->setup({ Encounter::Grass });
+            ui->comboBoxSearcherEncounter->addItems({ tr("Grass"), tr("Surfing") });
+            ui->comboBoxSearcherEncounter->setup({ Encounter::Grass, Encounter::Surfing });
 
             ui->filterSearcher->disableControls(Controls::IVs | Controls::HiddenPowers);
             ui->filterSearcher->enableControls(Controls::Ability | Controls::Shiny | Controls::Gender | Controls::GenderRatio
                                                | Controls::Natures);
             break;
-        }
         }
     }
 }

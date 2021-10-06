@@ -44,18 +44,10 @@ std::vector<WildState> WildGenerator5::generate(u64 seed) const
     switch (method)
     {
     case Method::Method5:
-        switch (encounter)
-        {
-        case Encounter::Grass:
-        case Encounter::Surfing:
-            return generateWild(seed);
-        default:
-            break;
-        }
+        return generateWild(seed);
     default:
-        break;
+        return std::vector<WildState>();
     }
-    return std::vector<WildState>();
 }
 
 std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
@@ -73,7 +65,17 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
         BWRNG go(rng.getSeed());
         state.setSeed(go.nextUInt(0x1fff)); // Chatot pitch
 
-        u32 slot = isBW2 ? go.nextUInt(100) : go.nextUInt();
+        u32 slot = 0;
+        switch (encounter)
+        {
+        case Encounter::Grass:
+        case Encounter::Surfing:
+            slot = isBW2 ? go.nextUInt(100) : go.nextUInt();
+            break;
+        default:
+            break;
+        }
+
         state.setEncounterSlot(EncounterSlot::bwSlot(slot, encounter, isBW2));
         go.advance(1); // Held item
 
@@ -126,7 +128,7 @@ std::vector<WildState> WildGenerator5::generateWild(u64 seed) const
         }
 
         u8 val = idBit ^ (pid & 1) ^ (pid >> 31);
-        if (val == 1)
+        if (val)
         {
             pid ^= 0x80000000;
         }
