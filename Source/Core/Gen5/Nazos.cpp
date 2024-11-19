@@ -60,66 +60,66 @@ consteval static std::array<u32, 5> computeNazoBW2(u32 nazo, u32 nazo0, u32 nazo
 // clang-format off
 constexpr std::array<u32, 5> englishBlack      = computeNazoBW(0x022160b0);
 constexpr std::array<u32, 5> englishWhite      = computeNazoBW(0x022160d0);
-constexpr std::array<u32, 5> englishBlackDSi   = computeNazoBW(0x02760190);
-constexpr std::array<u32, 5> englishWhiteDSi   = computeNazoBW(0x027601b0);
+constexpr std::array<u32, 5> englishBlackDSi   = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> englishWhiteDSi   = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> englishBlack2     = computeNazoBW2(0x02200010, 0x0209aee8, 0x02039de9);
 constexpr std::array<u32, 5> englishWhite2     = computeNazoBW2(0x02200050, 0x0209af28, 0x02039e15);
-constexpr std::array<u32, 5> englishBlack2DSi  = computeNazoBW2(0x027a5f70, 0x0209aee8, 0x02039de9);
-constexpr std::array<u32, 5> englishWhite2DSi  = computeNazoBW2(0x027a5e90, 0x0209af28, 0x02039e15);
+constexpr std::array<u32, 5> englishBlack2DSi  = computeNazoBW2(0x02770d50, 0x0209aee8, 0x02039de9);
+constexpr std::array<u32, 5> englishWhite2DSi  = computeNazoBW2(0x02770d50, 0x0209af28, 0x02039e15);
 
 constexpr std::array<u32, 5> japaneseBlack     = computeNazoBW(0x02215f10);
 constexpr std::array<u32, 5> japaneseWhite     = computeNazoBW(0x02215f30);
-constexpr std::array<u32, 5> japaneseBlackDSi  = computeNazoBW(0x02761150);
-constexpr std::array<u32, 5> japaneseWhiteDSi  = computeNazoBW(0x02761150);
+constexpr std::array<u32, 5> japaneseBlackDSi  = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> japaneseWhiteDSi  = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> japaneseBlack2    = computeNazoBW2(0x021ff9b0, 0x0209a8dc, 0x02039ac9);
 constexpr std::array<u32, 5> japaneseWhite2    = computeNazoBW2(0x021ff9d0, 0x0209a8fc, 0x02039af5);
-constexpr std::array<u32, 5> japaneseBlack2DSi = computeNazoBW2(0x027aa730, 0x0209a8dc, 0x02039ac9);
-constexpr std::array<u32, 5> japaneseWhite2DSi = computeNazoBW2(0x027aa5f0, 0x0209a8fc, 0x02039af5);
+constexpr std::array<u32, 5> japaneseBlack2DSi = computeNazoBW2(0x02770d50, 0x0209a8dc, 0x02039ac9);
+constexpr std::array<u32, 5> japaneseWhite2DSi = computeNazoBW2(0x02770d50, 0x0209a8fc, 0x02039af5);
 
 constexpr std::array<u32, 5> germanBlack       = computeNazoBW(0x02215ff0);
 constexpr std::array<u32, 5> germanWhite       = computeNazoBW(0x02216010);
-constexpr std::array<u32, 5> germanBlackDSi    = computeNazoBW(0x027602f0);
-constexpr std::array<u32, 5> germanWhiteDSi    = computeNazoBW(0x027602f0);
+constexpr std::array<u32, 5> germanBlackDSi    = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> germanWhiteDSi    = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> germanBlack2      = computeNazoBW2(0x021fff50, 0x0209ae28, 0x02039d69);
 constexpr std::array<u32, 5> germanWhite2      = computeNazoBW2(0x021fff70, 0x0209ae48, 0x02039d95);
-constexpr std::array<u32, 5> germanBlack2DSi   = computeNazoBW2(0x027a6110, 0x0209ae28, 0x02039d69);
-constexpr std::array<u32, 5> germanWhite2DSi   = computeNazoBW2(0x027a6010, 0x0209ae48, 0x02039d95);
+constexpr std::array<u32, 5> germanBlack2DSi   = computeNazoBW2(0x02770d50, 0x0209ae28, 0x02039d69);
+constexpr std::array<u32, 5> germanWhite2DSi   = computeNazoBW2(0x02770d50, 0x0209ae48, 0x02039d95);
 
 constexpr std::array<u32, 5> spanishBlack      = computeNazoBW(0x02216070);
 constexpr std::array<u32, 5> spanishWhite      = computeNazoBW(0x02216070);
-constexpr std::array<u32, 5> spanishBlackDSi   = computeNazoBW(0x027601f0);
-constexpr std::array<u32, 5> spanishWhiteDSi   = computeNazoBW(0x027601f0);
+constexpr std::array<u32, 5> spanishBlackDSi   = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> spanishWhiteDSi   = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> spanishBlack2     = computeNazoBW2(0x021fffd0, 0x0209aea8, 0x02039db9);
 constexpr std::array<u32, 5> spanishWhite2     = computeNazoBW2(0x021ffff0, 0x0209aec8, 0x02039de5);
-constexpr std::array<u32, 5> spanishBlack2DSi  = computeNazoBW2(0x027a6070, 0x0209aea8, 0x02039db9);
-constexpr std::array<u32, 5> spanishWhite2DSi  = computeNazoBW2(0x027a5fb0,  0x0209aec8, 0x02039de5);
+constexpr std::array<u32, 5> spanishBlack2DSi  = computeNazoBW2(0x02770d50, 0x0209aea8, 0x02039db9);
+constexpr std::array<u32, 5> spanishWhite2DSi  = computeNazoBW2(0x02770d50,  0x0209aec8, 0x02039de5);
 
 constexpr std::array<u32, 5> frenchBlack       = computeNazoBW(0x02216030);
 constexpr std::array<u32, 5> frenchWhite       = computeNazoBW(0x02216050);
-constexpr std::array<u32, 5> frenchBlackDSi    = computeNazoBW(0x02760230);
-constexpr std::array<u32, 5> frenchWhiteDSi    = computeNazoBW(0x02760250);
+constexpr std::array<u32, 5> frenchBlackDSi    = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> frenchWhiteDSi    = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> frenchBlack2      = computeNazoBW2(0x02200030, 0x0209af08, 0x02039df9);
 constexpr std::array<u32, 5> frenchWhite2      = computeNazoBW2(0x02200050, 0x0209af28, 0x02039e25);
-constexpr std::array<u32, 5> frenchBlack2DSi   = computeNazoBW2(0x027a5f90, 0x0209af08, 0x02039df9);
-constexpr std::array<u32, 5> frenchWhite2DSi   = computeNazoBW2(0x027a5ef0, 0x0209af28, 0x02039e25);
+constexpr std::array<u32, 5> frenchBlack2DSi   = computeNazoBW2(0x02770d50, 0x0209af08, 0x02039df9);
+constexpr std::array<u32, 5> frenchWhite2DSi   = computeNazoBW2(0x02770d50, 0x0209af28, 0x02039e25);
 
 constexpr std::array<u32, 5> italianBlack      = computeNazoBW(0x02215fb0);
 constexpr std::array<u32, 5> italianWhite      = computeNazoBW(0x02215fd0);
-constexpr std::array<u32, 5> italianBlackDSi   = computeNazoBW(0x027601d0);
-constexpr std::array<u32, 5> italianWhiteDSi   = computeNazoBW(0x027601d0);
+constexpr std::array<u32, 5> italianBlackDSi   = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> italianWhiteDSi   = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> italianBlack2     = computeNazoBW2(0x021fff10, 0x0209ade8, 0x02039d69);
 constexpr std::array<u32, 5> italianWhite2     = computeNazoBW2(0x021fff50, 0x0209ae28, 0x02039d95);
-constexpr std::array<u32, 5> italianBlack2DSi  = computeNazoBW2(0x027a5f70, 0x0209ade8, 0x02039d69);
-constexpr std::array<u32, 5> italianWhite2DSi  = computeNazoBW2(0x027a5ed0, 0x0209ae28, 0x02039d95);
+constexpr std::array<u32, 5> italianBlack2DSi  = computeNazoBW2(0x02770d50, 0x0209ade8, 0x02039d69);
+constexpr std::array<u32, 5> italianWhite2DSi  = computeNazoBW2(0x02770d50, 0x0209ae28, 0x02039d95);
 
 constexpr std::array<u32, 5> koreanBlack       = computeNazoBW(0x022167b0);
 constexpr std::array<u32, 5> koreanWhite       = computeNazoBW(0x022167b0);
-constexpr std::array<u32, 5> koreanBlackDSi    = computeNazoBW(0x02761150);
-constexpr std::array<u32, 5> koreanWhiteDSi    = computeNazoBW(0x02761150);
+constexpr std::array<u32, 5> koreanBlackDSi    = computeNazoBW(0x02737eb0);
+constexpr std::array<u32, 5> koreanWhiteDSi    = computeNazoBW(0x02737eb0);
 constexpr std::array<u32, 5> koreanBlack2      = computeNazoBW2(0x02200750, 0x0209b60c, 0x0203a4d5);
 constexpr std::array<u32, 5> koreanWhite2      = computeNazoBW2(0x02200770, 0x0209b62c, 0x0203a501);
-constexpr std::array<u32, 5> koreanBlack2DSi   = computeNazoBW2(0x02200770, 0x0209b60c, 0x0203a4d5);
-constexpr std::array<u32, 5> koreanWhite2DSi   = computeNazoBW2(0x027a57b0, 0x0209b62c, 0x0203a501);
+constexpr std::array<u32, 5> koreanBlack2DSi   = computeNazoBW2(0x02770d50, 0x0209b60c, 0x0203a4d5);
+constexpr std::array<u32, 5> koreanWhite2DSi   = computeNazoBW2(0x02770d50, 0x0209b62c, 0x0203a501);
 // clang-format on
 
 std::array<u32, 5> Nazos::getNazo(Game version, Language language, DSType dsType)
