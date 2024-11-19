@@ -1,4 +1,4 @@
-name: Window
+name: CI - Windows
 
 on:
   workflow_dispatch:
